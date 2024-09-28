@@ -1,14 +1,13 @@
 {
   "name": "blancco",
   "version": "0.1.0",
+  "license": "MIT",
   "bin": {
     "blancco": "bin/blancco.js"
   },
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc -w",
-    "test": "jest",
-    "cdk": "cdk"
+    "deploy:dev": "sh deploy.sh dev",
+    "fill": "set -a && source .env && python3 fillData.py && set +a"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
