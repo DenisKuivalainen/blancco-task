@@ -4,26 +4,26 @@ import os
 from datetime import datetime, timedelta
 
 
-def generateDeviceData():
+def generate_device_data():
     types = ["laptop", "phone", "server"]
     states = ["erased", "erasure failed"]
 
-    selectedType = random.choice(types)
-    selectedState = random.choice(states)
+    selected_type = random.choice(types)
+    selected_state = random.choice(states)
 
-    randomDate = datetime.now() - timedelta(random.randint(0, 30))
-    timestamp = randomDate.strftime("%Y-%m-%dT%H:%M:%SZ")
+    random_date = datetime.now() - timedelta(random.randint(0, 30))
+    timestamp = random_date.strftime("%Y-%m-%dT%H:%M:%SZ")
 
-    return {"type": selectedType, "state": selectedState, "timestamp": timestamp}
+    return {"type": selected_type, "state": selected_state, "timestamp": timestamp}
 
 
-def generateDeviceDataArray():
-    return [generateDeviceData() for _ in range(random.randint(4, 40))]
+def generate_device_data_array():
+    return [generate_device_data() for _ in range(random.randint(4, 40))]
 
 
 def main():
     url = os.environ["URL"] + "devices"
-    data = {"processed_devices": generateDeviceDataArray()}
+    data = {"processed_devices": generate_device_data_array()}
     headers = {"Authorization": os.environ["API_KEY"]}
 
     requests.post(url=url, json=data, headers=headers)

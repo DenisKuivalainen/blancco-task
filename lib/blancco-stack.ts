@@ -63,7 +63,7 @@ export class BlanccoStack extends Stack {
       {
         functionName: `blancco-${stage}-upload-devices`,
         runtime: lambda.Runtime.PYTHON_3_9,
-        handler: "functions.uploadDevices.handler",
+        handler: "functions.upload_devices.handler",
         code: lambda.Code.fromAsset(path.join(__dirname, "../src")),
         environment: {
           DEVICES_TABLE: devicesTable.tableName,
@@ -78,7 +78,7 @@ export class BlanccoStack extends Stack {
       {
         functionName: `blancco-${stage}-get-device-statistics`,
         runtime: lambda.Runtime.PYTHON_3_9,
-        handler: "functions.getDeviceStatistics.handler",
+        handler: "functions.get_device_statistics.handler",
         code: lambda.Code.fromAsset(path.join(__dirname, "../src")),
         environment: {
           STATISTICS_TABLE: statisticsTable.tableName,
@@ -134,7 +134,7 @@ export class BlanccoStack extends Stack {
       {
         functionName: `blancco-${stage}-device-statistics-stream`,
         runtime: lambda.Runtime.PYTHON_3_9,
-        handler: "functions.deviceStatisticsStream.handler",
+        handler: "functions.device_statistics_stram.handler",
         code: lambda.Code.fromAsset(path.join(__dirname, "../src")),
         environment: {
           QUEUE_URL: deviceStatisticsQueue.queueUrl,
@@ -162,7 +162,7 @@ export class BlanccoStack extends Stack {
       {
         functionName: `blancco-${stage}-device-statistics-queue`,
         runtime: lambda.Runtime.PYTHON_3_9,
-        handler: "functions.deviceStatesticsQueue.handler",
+        handler: "functions.device_statistics_queue.handler",
         code: lambda.Code.fromAsset(path.join(__dirname, "../src")),
         environment: {
           STATISTICS_TABLE: statisticsTable.tableName,

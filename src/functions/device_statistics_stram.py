@@ -4,7 +4,7 @@ import utils._sqs as sqs
 import os
 
 
-def transformDeviceRecords(records: List[Any]) -> List[StatisticsDevice]:
+def transform_device_records(records: List[Any]) -> List[StatisticsDevice]:
     return [
         {
             "id": record["dynamodb"]["NewImage"]["id"]["S"],
@@ -17,6 +17,6 @@ def transformDeviceRecords(records: List[Any]) -> List[StatisticsDevice]:
 
 
 def handler(event, context):
-    devices = transformDeviceRecords(event["Records"])
+    devices = transform_device_records(event["Records"])
 
-    sqs.sendBatch(messages=devices, url=os.getenv("QUEUE_URL"))
+    sqs.send_batch(messages=devices, url=os.getenv("QUEUE_URL"))

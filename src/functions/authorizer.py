@@ -1,10 +1,10 @@
 import os
-from utils.secretManager import getSecret
+from utils.secrets_manager import get_secret
 
 
 def handler(event, context):
     apiKeyArn = os.environ["API_KEY_SECRET_ARN"]
-    apiKey = getSecret(apiKeyArn)
+    apiKey = get_secret(apiKeyArn)
 
     headers = event.get("headers", {})
 

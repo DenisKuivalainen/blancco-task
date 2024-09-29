@@ -4,29 +4,29 @@ from typing import Dict, Any, Optional
 dynamodb = boto3.resource("dynamodb")
 
 
-def query(tableName: str, keyConditionExpression) -> Optional[Dict[str, Any]]:
-    response = dynamodb.Table(tableName).query(
-        KeyConditionExpression=keyConditionExpression
+def query(table_name: str, key_condition_expression) -> Optional[Dict[str, Any]]:
+    response = dynamodb.Table(table_name).query(
+        KeyConditionExpression=key_condition_expression
     )
     return response.get("Items", [])
 
 
-def put(tableName: str, item: Dict[str, Any]):
-    dynamodb.Table(tableName).put_item(Item=item)
+def put(table_name: str, item: Dict[str, Any]):
+    dynamodb.Table(table_name).put_item(Item=item)
 
 
 def update(
-    tableName: str,
+    table_name: str,
     key: Dict[str, Any],
-    updateExpression: str,
-    expressionAttributeNames: Dict[str, str],
-    expressionAttributeValues: Dict[str, Any],
+    update_expression: str,
+    expression_attribute_names: Dict[str, str],
+    expression_attribute_values: Dict[str, Any],
 ):
-    dynamodb.Table(tableName).update_item(
+    dynamodb.Table(table_name).update_item(
         Key=key,
-        UpdateExpression=updateExpression,
-        ExpressionAttributeNames=expressionAttributeNames,
-        ExpressionAttributeValues=expressionAttributeValues,
+        UpdateExpression=update_expression,
+        ExpressionAttributeNames=expression_attribute_names,
+        ExpressionAttributeValues=expression_attribute_values,
     )
 
 

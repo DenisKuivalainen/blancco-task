@@ -6,7 +6,7 @@ import uuid
 sqs = boto3.client("sqs")
 
 
-def sendBatch(url: str, messages: List[Any]):
+def send_batch(url: str, messages: List[Any]):
     entries = [
         {
             "Id": str(uuid.uuid4()),
